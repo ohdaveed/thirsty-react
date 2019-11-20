@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button, Label, Segment } from 'semantic-ui-react';
 
 class CreateCountdown extends Component {
-	constructor() {
+	constructor(){
 		super();
 
 		this.state = {
@@ -19,15 +19,15 @@ class CreateCountdown extends Component {
 		return(
 			<Segment>
 				<h4>Create Countdown</h4>
-				<Form>
+				<Form onSubmit={(e) => this.props.addCountDown(e, this.state)}>
 					<Label>Name:</Label>
-					<Form.Input/>
+					<Form.Input type='text' name='name' value={this.state.name} onChange={this.handleChange} />
 					<Label>Image:</Label>
-					<Form.Input/>
+					<Form.Input type='text' name='image' value={this.state.image} onChange={this.handleChange} />
 					<Label>Timer:</Label>
-					<Form.Input/>
+					<Form.Input type='text' name='timer' value={this.state.timer} onChange={this.handleChange} />
 					<Label>Type:</Label>
-					<Form.Input/>
+					<Form.Input type='text' name='type' value={this.state.type} onChange={this.handleChange} />
 					<Button></Button>
 					<Button type='Submit'>Create Countdown</Button>
 				</Form>
@@ -35,3 +35,5 @@ class CreateCountdown extends Component {
 			)
 	}
 }
+
+export default CreateCountdown;
