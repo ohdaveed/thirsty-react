@@ -36,4 +36,4 @@ class CreateCountdown extends Component {
 	}
 }
 
-export default CreateCountdown;
+
