@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import CoundownContainer from './CoundownContainer'
+import LoginRegisterForm from './LoginRegisterForm'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// D4S1
+class App extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      // loggedIn: false,
+      // loggedInUserEmail: null
+    }
+  }
+
+  }
+  render(){
+    return(
+        <div className="App">
+          {
+            // this.state.loggedIn
+            // ?
+            <CoundownContainer />
+            // :
+            // <LoginRegisterForm login={this.login} register={this.register}/>
+          }
+        </div>
+      );
+  }
 }
 
 export default App;
