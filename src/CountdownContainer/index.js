@@ -43,8 +43,8 @@ class CountdownContainer extends Component {
 		// post request
 		try {
 			// we have to send JSON
-			// createdCountdown 
-			const createdCountdownRequest = await fetch(process.env.REACT_APP_API_URL + '/api/v1/countdowns/', {
+			// createdCountdown variable will store the response from the express API
+			const createdCountdownResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/countdowns/', {
 				method: 'POST',
 				credentials: 'include',
 				body: JSON.stringify(countdownFromTheForm),
@@ -52,10 +52,21 @@ class CountdownContainer extends Component {
 					'Content-Type': 'applicatioin/json'
 				}
 			});
+			const parsedResponse = await createdCountdownResponse.json();
+			console.log(parsedResponse, ' this is a response');
+
+			// we are emptying all the countdowns that are living in state into a new array,
+			// and then adding the countdown we just reated to the end of it
+			// the new countdown which is called parsedResponse.data
+			this.setState({countdowns: [...this.state.countdowns, parsedResponse.data]})
+
 		}
 		catch (err) {
+			console.log('error');
 			console.log(err)
 		}
+		// request address will start with 'http://localhost:9000'
+		// because after we create it we want to add it to the countdowns array
 	}
 
 	render(){
