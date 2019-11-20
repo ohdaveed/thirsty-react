@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+<<<<<<< HEAD
 
 import LoginRegisterForm from "./LoginRegisterForm";
 
@@ -88,6 +89,35 @@ class App extends React.Component {
 			</div>
 		);
 	}
+=======
+import CoundownContainer from './CoundownContainer'
+import LoginRegisterForm from './LoginRegisterForm'
+
+// D4S1
+class App extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      // loggedIn: false,
+      // loggedInUserEmail: null
+    }
+  }
+
+  }
+  render(){
+    return(
+        <div className="App">
+          {
+            // this.state.loggedIn
+            // ?
+            <CoundownContainer />
+            // :
+            // <LoginRegisterForm login={this.login} register={this.register}/>
+          }
+        </div>
+      );
+  }
+>>>>>>> 422fe4cf5a5f5ff1a718b4c563a171d57028a227
 }
 
 export default App;
