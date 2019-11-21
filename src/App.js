@@ -65,6 +65,8 @@ class App extends React.Component {
 			}
 		);
 
+		console.log(response);
+
 		const parsedRegisterResponse = await response.json();
 
 		if (parsedRegisterResponse.status.code === 201) {
@@ -81,14 +83,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
-				{this.state.loggedIn ? (
-					<CountdownContainer />
-				) : (
-					<LoginRegisterForm
-						login={this.login}
-						register={this.register}
-					/>
-				)}
+				<h1> Im Thirsty</h1>
 			</div>
 		);
 	}
