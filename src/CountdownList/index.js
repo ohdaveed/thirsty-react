@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Button, Image } from "semantic-ui-react";
-import Timer from "../Timer";
+import CountdownC from "../CountdownC";
 
 function CountdownList(props) {
 	const countdowns = props.countdowns.map((countdown) => {
@@ -18,7 +18,7 @@ function CountdownList(props) {
 					<Button onClick={() => props.editCountdown(countdown.id)}>
 						Edit
 					</Button>
-					<Timer />
+					<CountdownC />
 				</Card.Content>
 			</Card>
 		);

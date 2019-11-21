@@ -1,7 +1,7 @@
 import React from "react";
 import ms from "pretty-ms";
 
-class Timer extends React.Component {
+class CountdownC extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -9,17 +9,17 @@ class Timer extends React.Component {
 			isOn: false,
 			start: 0
 		};
-		this.startTimer = this.startTimer.bind(this);
-		this.stopTimer = this.stopTimer.bind(this);
-		this.resetTimer = this.resetTimer.bind(this);
+		this.startCountdown = this.startCountdown.bind(this);
+		this.stopCountdown = this.stopCountdown.bind(this);
+		this.resetCountdown = this.resetCountdown.bind(this);
 	}
-	startTimer() {
+	startCountdown() {
 		this.setState({
 			isOn: true,
 			time: this.state.time,
 			start: Date.now() - this.state.time
 		});
-		this.timer = setInterval(
+		this.Countdown = setInterval(
 			() =>
 				this.setState({
 					time: Date.now() - this.state.start
@@ -27,29 +27,33 @@ class Timer extends React.Component {
 			1
 		);
 	}
-	stopTimer() {
+
+	// now - last fed ====> how long since last fed
+	// timer should show diff bt desired interval and how long since last fed
+
+	stopCountdown() {
 		this.setState({ isOn: false });
-		clearInterval(this.timer);
+		clearInterval(this.Countdown);
 	}
-	resetTimer() {
+	resetCountdown() {
 		this.setState({ time: 0, isOn: false });
 	}
 	render() {
 		let start =
 			this.state.time === 0 ? (
-				<button onClick={this.startTimer}>start</button>
+				<button onClick={this.startCountdown}>start</button>
 			) : null;
 		let stop =
 			this.state.time === 0 || !this.state.isOn ? null : (
-				<button onClick={this.stopTimer}>stop</button>
+				<button onClick={this.stopCountdown}>stop</button>
 			);
 		let resume =
 			this.state.time === 0 || this.state.isOn ? null : (
-				<button onClick={this.startTimer}>resume</button>
+				<button onClick={this.startCountdown}>resume</button>
 			);
 		let reset =
 			this.state.time === 0 || this.state.isOn ? null : (
-				<button onClick={this.resetTimer}>reset</button>
+				<button onClick={this.resetCountdown}>reset</button>
 			);
 		return (
 			<div>
@@ -63,4 +67,4 @@ class Timer extends React.Component {
 	}
 }
 
-export default Timer;
+export default CountdownC;
