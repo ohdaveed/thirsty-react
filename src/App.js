@@ -1,8 +1,7 @@
 import React from "react";
 import "./App.css";
-
-
 import LoginRegisterForm from "./LoginRegisterForm";
+import CountdownContainer from "./CountdownContainer";
 
 class App extends React.Component {
 	constructor() {
@@ -82,10 +81,14 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
-				<LoginRegisterForm
-					login={this.login}
-					register={this.register}
-				/>
+				{this.state.loggedIn ? (
+					<CountdownContainer />
+				) : (
+					<LoginRegisterForm
+						login={this.login}
+						register={this.register}
+					/>
+				)}
 			</div>
 		);
 	}
