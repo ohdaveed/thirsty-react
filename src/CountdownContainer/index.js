@@ -98,7 +98,7 @@ class CountdownContainer extends React.Component {
 			(countdown) => countdown.id === idOfCountdownToEdit
 		);
 		this.setState({
-			editModelOpen: true,
+			editModalOpen: true,
 			countdownToEdit: {
 				...countdownToEdit
 			}
@@ -112,6 +112,45 @@ class CountdownContainer extends React.Component {
 				[e.target.name]: e.target.value
 			}
 		});
+	};
+
+	updateCountdown = async (e) => {
+		e.preventDefault();
+
+		try {
+			const url =
+				process.env.REACT_APP_API_URL +
+				"/api/v1/countdowns/" +
+				this.state.countdownToEdit.id;
+
+			const updateResponse = await fetch(url, {
+				method: "PUT",
+				credentials: "include",
+				body: JSON.stringify(this.state.countdownToEdit),
+				headers: {
+					"Content-Type": "application/json"
+				}
+			});
+
+			const updateResonseParsed = await updateResponse.json();
+
+			const newCountdownArrayWithUpdate = this.state.countdowns.map(
+				(countdown) => {
+					if (countdown.id === updateResonseParsed.data.id) {
+						countdown = updateResonseParsed.data;
+					}
+					return countdown;
+				}
+			);
+
+			this.setState({
+				countdowns: newCountdownArrayWithUpdate
+			});
+
+			this.closeModal();
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	closeModal = () => {
@@ -131,7 +170,7 @@ class CountdownContainer extends React.Component {
 				/>
 
 				<EditCountdownModal
-					open={this.state.editModelOpen}
+					open={this.state.editModalOpen}
 					updateCountdown={this.updateCountdown}
 					countdownToEdit={this.state.countdownToEdit}
 					closeModal={this.closeModal}

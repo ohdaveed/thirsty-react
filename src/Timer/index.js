@@ -53,7 +53,7 @@ class Timer extends React.Component {
 			);
 		return (
 			<div>
-				<h3>timer: {ms(this.state.time)}</h3>
+				<h3>Countdown: {ms(this.state.time)}</h3>
 				{start}
 				{resume}
 				{stop}
