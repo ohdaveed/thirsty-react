@@ -1,5 +1,6 @@
 import React from "react";
 import CountdownList from "../CountdownList";
+import CreateCountdownForm from "../CreateCountdownForm";
 
 class CountdownContainer extends React.Component {
 	constructor(props) {
@@ -58,10 +59,14 @@ class CountdownContainer extends React.Component {
 
 	render() {
 		return (
-			<CountdownList
-				countdowns={this.state.countdowns}
-				deleteCountdown={this.deleteCountdown}
-			/>
+			<React.Fragment>
+				<CountdownList
+					countdowns={this.state.countdowns}
+					deleteCountdown={this.deleteCountdown}
+				/>
+
+				<CreateCountdownForm />
+			</React.Fragment>
 		);
 	}
 }
