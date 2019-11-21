@@ -34,8 +34,35 @@ class CountdownContainer extends React.Component {
 		}
 	};
 
+	deleteCountdown = async (id) => {
+		console.log(id);
+
+		const deleteCountdownResponse = await fetch(
+			process.env.REACT_APP_API_URL + "/api/v1/countdowns/" + id,
+			{
+				method: "DELETE",
+				credentials: "include"
+			}
+		);
+
+		const deleteCountdownParsed = await deleteCountdownResponse.json();
+
+		console.log(deleteCountdownParsed);
+
+		this.setState({
+			countdowns: this.state.countdowns.filter(
+				(countdown) => countdown.id !== id
+			)
+		});
+	};
+
 	render() {
-		return <CountdownList countdowns={this.state.countdowns} />;
+		return (
+			<CountdownList
+				countdowns={this.state.countdowns}
+				deleteCountdown={this.deleteCountdown}
+			/>
+		);
 	}
 }
 
