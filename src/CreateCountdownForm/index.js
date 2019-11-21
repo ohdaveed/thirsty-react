@@ -20,7 +20,7 @@ class CreateCountdown extends Component {
 		return (
 			<Segment>
 				<h4>Create Countdown</h4>
-				<Form>
+				<Form onSubmit={(e) => this.props.addCountdown(e, this.state)}>
 					<Label>Name:</Label>
 					<Form.Input
 						type="text"
