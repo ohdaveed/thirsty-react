@@ -1,6 +1,22 @@
 import React from "react";
 import CountdownList from "../CountdownList";
 import CreateCountdown from "../CreateCountdownForm";
+import Timer from "../Timer";
+import {
+	Button,
+	Container,
+	Divider,
+	Grid,
+	Header,
+	Icon,
+	Image,
+	List,
+	Menu,
+	Responsive,
+	Segment,
+	Sidebar,
+	Visibility
+} from "semantic-ui-react";
 
 class CountdownContainer extends React.Component {
 	constructor(props) {
@@ -95,6 +111,8 @@ class CountdownContainer extends React.Component {
 				/>
 
 				<CreateCountdown addCountdown={this.addCountdown} />
+
+				<Timer />
 			</React.Fragment>
 		);
 	}
