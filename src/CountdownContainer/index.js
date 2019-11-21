@@ -1,4 +1,5 @@
 import React from "react";
+import CountdownList from "../CountdownList";
 
 class CountdownContainer extends React.Component {
 	constructor(props) {
@@ -9,8 +10,32 @@ class CountdownContainer extends React.Component {
 		};
 	}
 
+	componentDidMount() {
+		this.getCountdowns();
+	}
+
+	getCountdowns = async () => {
+		try {
+			const countdowns = await fetch(
+				process.env.REACT_APP_API_URL + "/api/v1/countdowns/",
+				{
+					credentials: "include"
+				}
+			);
+
+			const parsedCountdowns = await countdowns.json();
+			console.log(parsedCountdowns);
+
+			this.setState({
+				countdowns: parsedCountdowns.data
+			});
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	render() {
-		return <h1>Hi Mom</h1>;
+		return <CountdownList countdowns={this.state.countdowns} />;
 	}
 }
 
