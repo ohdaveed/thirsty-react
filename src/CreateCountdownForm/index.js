@@ -12,6 +12,10 @@ class CreateCountdown extends Component {
 		};
 	}
 
+	handleChange = (e) => {
+		this.setState({ [e.currentTarget.name]: e.currentTarget.value });
+	};
+
 	render() {
 		return (
 			<Segment>

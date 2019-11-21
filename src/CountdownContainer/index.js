@@ -1,6 +1,6 @@
 import React from "react";
 import CountdownList from "../CountdownList";
-import CreateCountdownForm from "../CreateCountdownForm";
+import CreateCountdown from "../CreateCountdownForm";
 
 class CountdownContainer extends React.Component {
 	constructor(props) {
@@ -14,6 +14,35 @@ class CountdownContainer extends React.Component {
 	componentDidMount() {
 		this.getCountdowns();
 	}
+
+	addCountdown = async (e, countdownFromTheForm) => {
+		e.preventDefault();
+		console.log(countdownFromTheForm);
+
+		try {
+			const createdCountdownResponse = await fetch(
+				process.env.REACT_APP_API_URL + "/api/v1/countdowns/",
+				{
+					method: "POST",
+					credentials: "include",
+					body: JSON.stringify(countdownFromTheForm),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				}
+			);
+
+			const parsedResponse = await createdCountdownResponse.json();
+			console.log(parsedResponse, "this is the response");
+
+			this.setState({
+				countdowns: [...this.state.countdowns, parsedResponse.data]
+			});
+		} catch (err) {
+			console.log("error");
+			console.log(err);
+		}
+	};
 
 	getCountdowns = async () => {
 		try {
@@ -65,7 +94,7 @@ class CountdownContainer extends React.Component {
 					deleteCountdown={this.deleteCountdown}
 				/>
 
-				<CreateCountdownForm />
+				<CreateCountdown addCountdown={this.addCountdown} />
 			</React.Fragment>
 		);
 	}
