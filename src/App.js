@@ -3,37 +3,37 @@ import "./App.css";
 import LoginRegisterForm from "./LoginRegisterForm";
 import CountdownContainer from "./CountdownContainer";
 
+console.log(process.env);
+
 class App extends React.Component {
 	constructor() {
 		super();
 
 		this.state = {
 			loggedIn: false,
-			loggedInUsername: null // you might want to track some info here
+			loggedInEmail: null // you might want to track some info here
 			// helpful for "logged in as reuben@reuben.com"
 		};
 	}
 
 	login = async (loginInfo) => {
-		const response = await fetch(
-			process.env.REACT_APP_API_URL + "/api/v1/users/login",
-			{
-				method: "POST",
-				// in the express unit, the browser would automatically send the cookie
-				// with each request (GET and POST), but fetch will not.
-				// adding this line will make fetch send the cookie
-				// if you forget this you will not be logged in for that request
-				credentials: "include",
-				body: JSON.stringify(loginInfo),
-				headers: {
-					"Content-Type": "application/json"
-				}
+		const url = process.env.REACT_APP_API_URL + "/api/v1/users/login";
+		console.log(url);
+		const response = await fetch(url, {
+			method: "POST",
+			// in the express unit, the browser would automatically send the cookie
+			// with each request (GET and POST), but fetch will not.
+			// adding this line will make fetch send the cookie
+			// if you forget this you will not be logged in for that request
+			credentials: "include",
+			body: JSON.stringify(loginInfo),
+			headers: {
+				"Content-Type": "application/json"
 			}
-		);
-
-		console.log(response);
+		});
 
 		const parsedLoginResponse = await response.json();
+		console.log(parsedLoginResponse);
 
 		// want to change the screen in the app when we know the login was good
 		// and show dog container
@@ -83,7 +83,14 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
-				<h1> Im Thirsty</h1>
+				{this.state.loggedIn ? (
+					<CountdownContainer />
+				) : (
+					<LoginRegisterForm
+						login={this.login}
+						register={this.register}
+					/>
+				)}
 			</div>
 		);
 	}
