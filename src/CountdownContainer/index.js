@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-
+import CountdownList from '../CountdownList';
+import createdCountdown from '../CreatedCountdown';
+import EditCountdown from '../EditCountdownModal';
+import { Grid } from 'semantic-ui-react';
 
 class CountdownContainer extends Component {
 	constructor(props){
@@ -71,8 +74,21 @@ class CountdownContainer extends Component {
 
 	render(){
 		return (
+			<Grid>
+				<Grid.Row>
+				<Grid.Column>
+					<CountdownList
+						// countdowns={this.state.countdowns}
+						// deleteCountdown={this.deleteCountdown}
+						// editCountdown={this.editCountdown}
+					/>
+				</Grid.Column>
+				<Grid.Column>
+					<CreatedCountdown addCountdown={this.addCountdown} />
+				</Grid.Column>
+				</Grid.Row>
 
-
+			</Grid>
 		)
 	}
 }
