@@ -1,29 +1,20 @@
 import React from "react";
 import CountdownList from "../CountdownList";
 import CreateCountdown from "../CreateCountdownForm";
-import Timer from "../Timer";
-import {
-	Button,
-	Container,
-	Divider,
-	Grid,
-	Header,
-	Icon,
-	Image,
-	List,
-	Menu,
-	Responsive,
-	Segment,
-	Sidebar,
-	Visibility
-} from "semantic-ui-react";
+import EditCountdownModal from "../EditCountdownModal";
 
 class CountdownContainer extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			countdowns: []
+			countdowns: [],
+			editModalOpen: false,
+			countdownToEdit: {
+				name: "",
+				image: "",
+				timer: ""
+			}
 		};
 	}
 
@@ -102,17 +93,52 @@ class CountdownContainer extends React.Component {
 		});
 	};
 
+	editCountdown = (idOfCountdownToEdit) => {
+		const countdownToEdit = this.state.countdowns.find(
+			(countdown) => countdown.id === idOfCountdownToEdit
+		);
+		this.setState({
+			editModelOpen: true,
+			countdownToEdit: {
+				...countdownToEdit
+			}
+		});
+	};
+
+	handleEditChange = (e) => {
+		this.setState({
+			countdownToEdit: {
+				...this.state.countdownToEdit,
+				[e.target.name]: e.target.value
+			}
+		});
+	};
+
+	closeModal = () => {
+		this.setState({
+			editModalOpen: false
+		});
+	};
+
 	render() {
 		return (
 			<React.Fragment>
+				<h2>Countdowns</h2>
 				<CountdownList
 					countdowns={this.state.countdowns}
 					deleteCountdown={this.deleteCountdown}
+					editCountdown={this.editCountdown}
+				/>
+
+				<EditCountdownModal
+					open={this.state.editModelOpen}
+					updateCountdown={this.updateCountdown}
+					countdownToEdit={this.state.countdownToEdit}
+					closeModal={this.closeModal}
+					handleEditChange={this.handleEditChange}
 				/>
 
 				<CreateCountdown addCountdown={this.addCountdown} />
-
-				<Timer />
 			</React.Fragment>
 		);
 	}

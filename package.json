@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "prettier": "^1.19.1",
+    "pretty-ms": "^5.0.0",
     "react": "^16.12.0",
     "react-compound-timer": "^1.1.15",
     "react-dom": "^16.12.0",

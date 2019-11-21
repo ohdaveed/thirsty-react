@@ -15,7 +15,9 @@ function CountdownList(props) {
 					<Button onClick={() => props.deleteCountdown(countdown.id)}>
 						Delete
 					</Button>
-					<Button>Edit</Button>
+					<Button onClick={() => props.editCountdown(countdown.id)}>
+						Edit
+					</Button>
 					<Timer />
 				</Card.Content>
 			</Card>
