@@ -52,7 +52,6 @@ class LoginRegisterForm extends React.Component {
 	render() {
 		return (
 			<div className="LoginRegisterForm">
-				<h1 className="thirstyLogo">Thirsty</h1>
 				<h4>Stay hydrated! Your personal reminder<br/>
 					to water yourself and everything else.</h4>
 				<Form onSubmit={this.handleSubmit}>

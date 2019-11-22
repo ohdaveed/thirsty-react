@@ -17,12 +17,12 @@ class Timer extends React.Component {
 		this.setState({
 			isOn: true,
 			time: this.state.time,
-			start: Date.now() - this.state.time
+			start: this.state.time
 		});
 		this.Countdown = setInterval(
 			() =>
 				this.setState({
-					time: Date.now() - this.state.start
+					time: this.state.start
 				}),
 			1
 		);
