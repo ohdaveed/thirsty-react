@@ -15,7 +15,6 @@ class Timer extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log(this.props);
 		this.setState({
 			time: this.props.countdown.timer
 		});
@@ -24,11 +23,12 @@ class Timer extends React.Component {
 		this.setState({
 			isOn: true,
 			time: this.state.time,
-			start: this.state.time
+
+			start: this.state.time--
 		});
 		this.Countdown = setInterval(() =>
 			this.setState({
-				time: this.state.start --
+				time: this.state.start--
 			})
 		);
 	}
@@ -44,9 +44,6 @@ class Timer extends React.Component {
 		this.setState({ time: this.props.countdown.timer, isOn: false });
 	}
 	render() {
-		console.log("Timer is rendering");
-		console.log(this.props.countdown.timer);
-		console.log(this.state.time);
 		let start =
 			this.state.time === 0 ? (
 				<button onClick={this.startCountdown}>start</button>
@@ -57,11 +54,11 @@ class Timer extends React.Component {
 			);
 		let resume =
 			this.state.time === 0 || this.state.isOn ? null : (
-				<button onClick={this.startCountdown}>resume</button>
+				<button onClick={this.startCountdown}>Start</button>
 			);
 		let reset =
 			this.state.time === 0 || this.state.isOn ? null : (
-				<button onClick={this.resetCountdown}>reset</button>
+				<button onClick={this.resetCountdown}>Water</button>
 			);
 		return (
 			<div>
