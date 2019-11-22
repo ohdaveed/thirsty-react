@@ -18,7 +18,7 @@ function CountdownList(props) {
 					<Button onClick={() => props.editCountdown(countdown.id)}>
 						Edit
 					</Button>
-					<Timer />
+					<Timer countdown={countdown} />
 				</Card.Content>
 			</Card>
 		);

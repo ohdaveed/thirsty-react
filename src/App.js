@@ -1,6 +1,7 @@
 import React from "react";
-import "semantic-ui-css/semantic.min.css";
+
 import { Header } from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
 import "./App.css";
 import LoginRegisterForm from "./LoginRegisterForm";
 import CountdownContainer from "./CountdownContainer";
@@ -134,6 +135,7 @@ class App extends React.Component {
 					<CountdownContainer logout={this.logout} />
 				) : (
 					<LoginRegisterForm
+						style={{ width: 400 }}
 						login={this.login}
 						register={this.register}
 					/>
