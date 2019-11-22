@@ -5,10 +5,15 @@ import Timer from "../Timer";
 function CountdownList(props) {
 	const countdowns = props.countdowns.map((countdown) => {
 		let color;
+		// greater than 1 hour
 		if (countdown.timer >= 3600000) {
 			color = "green";
+
+			// between 59 mins and 10 mins
 		} else if (countdown.timer < 3600000 && countdown.timer >= 600000) {
 			color = "yellow";
+
+			// 600000 is equal to 10 mins
 		} else if (countdown.timer < 600000) {
 			color = "red";
 		}
