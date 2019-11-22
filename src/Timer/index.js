@@ -13,18 +13,23 @@ class Timer extends React.Component {
 		this.stopCountdown = this.stopCountdown.bind(this);
 		this.resetCountdown = this.resetCountdown.bind(this);
 	}
+
+	componentDidMount() {
+		console.log(this.props);
+		this.setState({
+			time: this.props.countdown.timer
+		});
+	}
 	startCountdown() {
 		this.setState({
 			isOn: true,
 			time: this.state.time,
 			start: this.state.time
 		});
-		this.Countdown = setInterval(
-			() =>
-				this.setState({
-					time: this.state.start
-				}),
-			1
+		this.Countdown = setInterval(() =>
+			this.setState({
+				time: this.state.start --
+			})
 		);
 	}
 
@@ -36,9 +41,12 @@ class Timer extends React.Component {
 		clearInterval(this.Countdown);
 	}
 	resetCountdown() {
-		this.setState({ time: 0, isOn: false });
+		this.setState({ time: this.props.countdown.timer, isOn: false });
 	}
 	render() {
+		console.log("Timer is rendering");
+		console.log(this.props.countdown.timer);
+		console.log(this.state.time);
 		let start =
 			this.state.time === 0 ? (
 				<button onClick={this.startCountdown}>start</button>
