@@ -4,10 +4,19 @@ import Timer from "../Timer";
 
 function CountdownList(props) {
 	const countdowns = props.countdowns.map((countdown) => {
+		let color;
+		if (countdown.timer >= 3600000) {
+			color = "green";
+		} else if (countdown.timer < 3600000 && countdown.timer >= 600000) {
+			color = "yellow";
+		} else if (countdown.timer < 600000) {
+			color = "red";
+		}
+
 		return (
-			<Card key={countdown.id}>
+			<Card key={countdown.id} color={color}>
 				<Image src={countdown.image} size="small" wrapped ui={false} />
-				<Card.Content>
+				<Card.Content color="red">
 					<Card.Header>{countdown.name}</Card.Header>
 					<Card.Description>{countdown.timer}</Card.Description>
 				</Card.Content>
