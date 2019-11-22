@@ -52,6 +52,9 @@ class LoginRegisterForm extends React.Component {
 	render() {
 		return (
 			<div className="LoginRegisterForm">
+				<h1 className="thirstyLogo">Thirsty</h1>
+				<h4>Stay hydrated! Your personal reminder<br/>
+					to water yourself and everything else.</h4>
 				<Form onSubmit={this.handleSubmit}>
 					<React.Fragment>
 						<Label>Email:</Label>
@@ -78,15 +81,15 @@ class LoginRegisterForm extends React.Component {
 					</Button>
 				</Form>
 				{this.state.action === "register" ? (
-					<small>
+					<h3>
 						Already have an account? Log in{" "}
 						<span onClick={this.switchForm}>here</span>.
-					</small>
+					</h3>
 				) : (
-					<small>
+					<h3>
 						Need an account? Sign up{" "}
-						<span onClick={this.switchForm}>here</span>
-					</small>
+						<span onClick={this.switchForm}>here</span>.
+					</h3>
 				)}
 			</div>
 		);

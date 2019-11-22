@@ -50,7 +50,7 @@ class CountdownContainer extends React.Component {
 			console.log("error");
 			console.log(err);
 		}
-	};
+	}
 
 	getCountdowns = async () => {
 		try {
@@ -70,18 +70,14 @@ class CountdownContainer extends React.Component {
 		} catch (err) {
 			console.log(err);
 		}
-	};
+	}
 
 	deleteCountdown = async (id) => {
-		console.log(id);
-
-		const deleteCountdownResponse = await fetch(
-			process.env.REACT_APP_API_URL + "/api/v1/countdowns/" + id,
-			{
+		// console.log(id);
+		const deleteCountdownResponse = await fetch(process.env.REACT_APP_API_URL + "/api/v1/countdowns/" + id, {
 				method: "DELETE",
 				credentials: "include"
-			}
-		);
+		})
 
 		const deleteCountdownParsed = await deleteCountdownResponse.json();
 
@@ -91,8 +87,8 @@ class CountdownContainer extends React.Component {
 			countdowns: this.state.countdowns.filter(
 				(countdown) => countdown.id !== id
 			)
-		});
-	};
+		})
+	}
 
 	editCountdown = (idOfCountdownToEdit) => {
 		const countdownToEdit = this.state.countdowns.find(
@@ -103,8 +99,8 @@ class CountdownContainer extends React.Component {
 			countdownToEdit: {
 				...countdownToEdit
 			}
-		});
-	};
+		})
+	}
 
 	handleEditChange = (e) => {
 		this.setState({
@@ -112,8 +108,8 @@ class CountdownContainer extends React.Component {
 				...this.state.countdownToEdit,
 				[e.target.name]: e.target.value
 			}
-		});
-	};
+		})
+	}
 
 	updateCountdown = async (e) => {
 		e.preventDefault();
@@ -152,7 +148,7 @@ class CountdownContainer extends React.Component {
 		} catch (err) {
 			console.log(err);
 		}
-	};
+	}
 
 	closeModal = () => {
 		this.setState({
@@ -162,12 +158,12 @@ class CountdownContainer extends React.Component {
 
 	logout = () => {
 		console.log("log out button clicked");
-	};
+	}
 
 	render() {
 		return (
 			<React.Fragment>
-				<h2>Countdowns</h2>
+				<h2>Thirsty</h2>
 				<Button onClick={this.logout}>Log Out</Button>
 				<CountdownList
 					countdowns={this.state.countdowns}
