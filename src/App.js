@@ -124,6 +124,11 @@ class App extends React.Component {
 				<Header>
 					{" "}
 					<h1>Thirsty</h1>{" "}
+					<h4>
+						Stay hydrated! Your personal reminder
+						<br />
+						to water yourself and everything else.
+					</h4>
 				</Header>
 				{this.state.loggedIn ? (
 					<CountdownContainer logout={this.logout} />
