@@ -160,11 +160,15 @@ class CountdownContainer extends React.Component {
 		});
 	};
 
+	logout = () => {
+		console.log("log out button clicked");
+	};
+
 	render() {
 		return (
 			<React.Fragment>
 				<h2>Countdowns</h2>
-				<Button>Log Out</Button>
+				<Button onClick={this.logout}>Log Out</Button>
 				<CountdownList
 					countdowns={this.state.countdowns}
 					deleteCountdown={this.deleteCountdown}
