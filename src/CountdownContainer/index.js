@@ -158,7 +158,8 @@ class CountdownContainer extends React.Component {
 
 	logout = () => {
 		console.log("log out button clicked");
-	}
+		this.props.logout();
+	};
 
 	render() {
 		return (
