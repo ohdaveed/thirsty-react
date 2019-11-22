@@ -1,7 +1,7 @@
 import React from "react";
 import ms from "pretty-ms";
 
-class CountdownC extends React.Component {
+class Timer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -67,4 +67,4 @@ class CountdownC extends React.Component {
 	}
 }
 
-export default CountdownC;
+export default Timer;

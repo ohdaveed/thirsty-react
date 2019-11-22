@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "semantic-ui-react";
 import CountdownList from "../CountdownList";
 import CreateCountdown from "../CreateCountdownForm";
 import EditCountdownModal from "../EditCountdownModal";
@@ -163,6 +164,7 @@ class CountdownContainer extends React.Component {
 		return (
 			<React.Fragment>
 				<h2>Countdowns</h2>
+				<Button>Log Out</Button>
 				<CountdownList
 					countdowns={this.state.countdowns}
 					deleteCountdown={this.deleteCountdown}
