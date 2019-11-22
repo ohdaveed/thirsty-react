@@ -1,5 +1,6 @@
 import React from "react";
 import "semantic-ui-css/semantic.min.css";
+import { Header } from "semantic-ui-react";
 import "./App.css";
 import LoginRegisterForm from "./LoginRegisterForm";
 import CountdownContainer from "./CountdownContainer";
@@ -120,6 +121,10 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
+				<Header>
+					{" "}
+					<h1>Thirsty</h1>{" "}
+				</Header>
 				{this.state.loggedIn ? (
 					<CountdownContainer logout={this.logout} />
 				) : (
