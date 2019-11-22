@@ -41,7 +41,7 @@ class Timer extends React.Component {
 		clearInterval(this.Countdown);
 	}
 	resetCountdown() {
-		this.setState({ time: 0, isOn: false });
+		this.setState({ time: this.props.countdown.timer, isOn: false });
 	}
 	render() {
 		console.log("Timer is rendering");
