@@ -2,12 +2,29 @@ import React, { Component } from "react";
 import { Card, Button, Image } from "semantic-ui-react";
 import Timer from "../Timer";
 
+<<<<<<< HEAD
 class UpdateColor extends Component {
 	constructor() {
 		super()
 
 		this.state = {
 			timer: ""
+=======
+function CountdownList(props) {
+	const countdowns = props.countdowns.map((countdown) => {
+		let color;
+		// greater than 1 hour
+		if (countdown.timer >= 3600000) {
+			color = "green";
+
+			// between 59 mins and 10 mins
+		} else if (countdown.timer < 3600000 && countdown.timer >= 600000) {
+			color = "yellow";
+
+			// 600000 is equal to 10 mins
+		} else if (countdown.timer < 600000) {
+			color = "red";
+>>>>>>> f47db05a6ed22b555e46d423ad3bde6bc3856c9f
 		}
 	}
 	componentDidMount(){
