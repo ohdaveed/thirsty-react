@@ -1,7 +1,6 @@
 import React from "react";
-
-import { Header } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+import { Header } from "semantic-ui-react";
 import "./App.css";
 import LoginRegisterForm from "./LoginRegisterForm";
 import CountdownContainer from "./CountdownContainer";
@@ -100,6 +99,13 @@ class App extends React.Component {
 			}
 		});
 
+		// we have to retrieve the time logged out come up with the time 
+		// between then and the time logged in
+
+		// then we're going to take that time and subtract it from the time the 
+		// countdowns passed
+
+
 		const parsedLoginResponse = await response.json();
 		console.log(parsedLoginResponse);
 
@@ -125,17 +131,11 @@ class App extends React.Component {
 				<Header>
 					{" "}
 					<h1>Thirsty</h1>{" "}
-					<h4>
-						Stay hydrated! Your personal reminder
-						<br />
-						to water yourself and everything else.
-					</h4>
 				</Header>
 				{this.state.loggedIn ? (
 					<CountdownContainer logout={this.logout} />
 				) : (
 					<LoginRegisterForm
-						style={{ width: 400 }}
 						login={this.login}
 						register={this.register}
 					/>

@@ -1,18 +1,31 @@
-import React from "react";
+import React, { Component } from "react";
 import { Card, Button, Image } from "semantic-ui-react";
 import Timer from "../Timer";
 
-function CountdownList(props) {
-	const countdowns = props.countdowns.map((countdown) => {
-		let color;
-		if (countdown.timer >= 3600000) {
-			color = "green";
-		} else if (countdown.timer < 3600000 && countdown.timer >= 600000) {
-			color = "yellow";
-		} else if (countdown.timer < 600000) {
-			color = "red";
-		}
+class UpdateColor extends Component {
+	constructor() {
+		super()
 
+		this.state = {
+			timer: ""
+		}
+	}
+	componentDidMount(){
+		this.getCountdowns();
+	}
+	countdownList = async (e) = {
+		const countdowns = props.countdowns.map((countdown) => {
+			let color;
+			if (countdown.timer >= 3600000) {
+				color = "green";
+			} else if (countdown.timer < 3600000 && countdown.timer >= 600000) {
+				color = "yellow";
+			} else if (countdown.timer < 600000) {
+				color = "red";
+			}
+	}
+
+	render(){
 		return (
 			<Card key={countdown.id} color={color}>
 				<Image src={countdown.image} size="small" wrapped ui={false} />
@@ -30,8 +43,28 @@ function CountdownList(props) {
 					<Timer countdown={countdown} />
 				</Card.Content>
 			</Card>
-		);
-	});
-	return <Card.Group>{countdowns}</Card.Group>;
+			);
+		});
+			<Card.Group>{ countdowns }</Card.Group>
+	}
 }
+}
+// 	updateColor = async (e) => {
+// 		e.preventDefault()
+// 		let color
+// 		const countdowns = this.countdowns.map(countdown) => {
+// 				if (countdown.timer >= 3600000) {
+// 					color = "green";
+// 				} else if (countdown.timer < 3600000 && countdown.timer >= 600000) {
+// 					color = "yellow";
+// 				} else if (countdown.timer < 600000) {
+// 					color = "red";
+// 				}
+// 			}
+// 		}
+
+
+
+
+
 export default CountdownList;
