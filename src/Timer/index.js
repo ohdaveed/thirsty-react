@@ -2,71 +2,46 @@ import React from "react";
 import ms from "pretty-ms";
 
 class Timer extends React.Component {
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = {
-			time: 0,
-			isOn: false,
-			start: 0
+			timeLeft: 0,
 		};
-		this.startCountdown = this.startCountdown.bind(this);
-		this.stopCountdown = this.stopCountdown.bind(this);
-		this.resetCountdown = this.resetCountdown.bind(this);
+
 	}
 
 	componentDidMount() {
-		this.setState({
-			time: this.props.countdown.timer
-		});
-	}
-	startCountdown() {
-		this.setState({
-			isOn: true,
-			time: this.state.time,
-
-			start: this.state.time--
-		});
-		this.Countdown = setInterval(() =>
-			this.setState({
-				time: this.state.start--
-			})
-		);
+		this.startCountdown()
 	}
 
-	// now - last fed ====> how long since last fed
-	// timer should show diff bt desired interval and how long since last fed
+	startCountdown = () => {
+		// setInterval	
 
-	stopCountdown() {
-		this.setState({ isOn: false });
-		clearInterval(this.Countdown);
+			// time_since_last_watering = Date.now - last watered
+
+			// timeLeft = total_time_between_waterings - time_since_last_watering
+
+			// set state -- update timeleft
+
 	}
-	resetCountdown() {
-		this.setState({ time: this.props.countdown.timer, isOn: false });
+
+
+	
+
+	waterPlant = () => {
+		// update last_watered in db
+			// use route in back end
+
 	}
+
+
 	render() {
-		let start =
-			this.state.time === 0 ? (
-				<button onClick={this.startCountdown}>start</button>
-			) : null;
-		let stop =
-			this.state.time === 0 || !this.state.isOn ? null : (
-				<button onClick={this.stopCountdown}>stop</button>
-			);
-		let resume =
-			this.state.time === 0 || this.state.isOn ? null : (
-				<button onClick={this.startCountdown}>Start</button>
-			);
-		let reset =
-			this.state.time === 0 || this.state.isOn ? null : (
-				<button onClick={this.resetCountdown}>Water</button>
-			);
+
+
 		return (
 			<div>
-				<h3>Countdown: {ms(this.state.time)}</h3>
-				{start}
-				{resume}
-				{stop}
-				{reset}
+				<h3>Countdown: {ms(this.state.timeLeft)}</h3>
+				<button onClick={this.waterPlant}>Water</button>
 			</div>
 		);
 	}

@@ -16,7 +16,7 @@ class CountdownContainer extends React.Component {
 				image: "",
 				timer: ""
 			}
-		};
+		}
 	}
 
 	componentDidMount() {
@@ -129,26 +129,34 @@ class CountdownContainer extends React.Component {
 				}
 			});
 
-			const updateResonseParsed = await updateResponse.json();
+			const updateResponseParsed = await updateResponse.json();
 
 			const newCountdownArrayWithUpdate = this.state.countdowns.map(
 				(countdown) => {
-					if (countdown.id === updateResonseParsed.data.id) {
-						countdown = updateResonseParsed.data;
+					if (countdown.id === updateResponseParsed.data.id) {
+						countdown = updateResponseParsed.data;
 					}
 					return countdown;
 				}
 			);
 
-			this.setState({
-				countdowns: newCountdownArrayWithUpdate
-			});
+			this.forceUpdate(
+				this.setState({
+					countdowns: newCountdownArrayWithUpdate
+				})
+			);
 
 			this.closeModal();
 		} catch (err) {
 			console.log(err);
 		}
 	}
+
+	// static getDerivedStateFromProps(props, state) {
+	// 	console.log('getDerivedStateFromProps is being called');
+	// 	console.log('props' , props);
+	// 	console.log('state' , state);
+	// }
 
 	closeModal = () => {
 		this.setState({
