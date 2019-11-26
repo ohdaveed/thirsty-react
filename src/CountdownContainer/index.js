@@ -138,13 +138,10 @@ class CountdownContainer extends React.Component {
 					}
 					return countdown;
 				}
-			);
-
-			this.forceUpdate(
+			)
 				this.setState({
 					countdowns: newCountdownArrayWithUpdate
 				})
-			);
 
 			this.closeModal();
 		} catch (err) {
