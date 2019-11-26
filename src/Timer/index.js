@@ -100,7 +100,6 @@ class Timer extends React.Component {
 		return (
 			<div>
 				<h3>Countdown: {ms(this.state.timeLeft)}</h3>
-				<h3>Countdown: {ms(this.state.timer)}</h3>
 				<button onClick={this.waterPlant}>Water</button>
 			</div>
 		);

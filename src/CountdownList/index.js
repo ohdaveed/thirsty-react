@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Button, Image } from "semantic-ui-react";
 import Timer from "../Timer";
+import ms from "pretty-ms";
 
 function CountdownList(props) {
 	const countdowns = props.countdowns.map((countdown) => {
@@ -18,7 +19,9 @@ function CountdownList(props) {
 				<Image src={countdown.image} size="small" wrapped ui={false} />
 				<Card.Content color={color}>
 					<Card.Header>{countdown.name}</Card.Header>
-					<Card.Description>{countdown.timer}</Card.Description>
+					<Card.Description>
+						{ms(countdown.timer * 1000)}
+					</Card.Description>
 				</Card.Content>
 				<Card.Content extra>
 					<Button onClick={() => props.deleteCountdown(countdown.id)}>
