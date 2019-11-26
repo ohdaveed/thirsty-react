@@ -13,7 +13,6 @@ function CountdownList(props) {
 			color = "red";
 		}
 
-
 		return (
 			<Card key={countdown.id} color={color}>
 				<Image src={countdown.image} size="small" wrapped ui={false} />
