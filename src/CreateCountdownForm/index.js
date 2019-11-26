@@ -16,7 +16,6 @@ class CreateCountdown extends Component {
 		this.setState({ [e.currentTarget.name]: e.currentTarget.value });
 	};
 
-
 	render() {
 		return (
 			<Segment>
@@ -40,7 +39,7 @@ class CreateCountdown extends Component {
 
 					<Label>Timer:</Label>
 					<Form.Input
-						type="text"
+						type="integer"
 						name="timer"
 						value={this.state.timer}
 						onChange={this.handleChange}
