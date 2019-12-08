@@ -99,12 +99,11 @@ class App extends React.Component {
 			}
 		});
 
-		// we have to retrieve the time logged out come up with the time 
+		// we have to retrieve the time logged out come up with the time
 		// between then and the time logged in
 
-		// then we're going to take that time and subtract it from the time the 
+		// then we're going to take that time and subtract it from the time the
 		// countdowns passed
-
 
 		const parsedLoginResponse = await response.json();
 		console.log(parsedLoginResponse);
