@@ -13,20 +13,16 @@ class App extends React.Component {
 
 		this.state = {
 			loggedIn: false,
-			loggedInEmail: null // you might want to track some info here
-			// helpful for "logged in as reuben@reuben.com"
+			loggedInEmail: null 
 		};
 	}
 
 	login = async (loginInfo) => {
 		const url = process.env.REACT_APP_API_URL + "/api/v1/users/login";
 		console.log(url);
+
 		const response = await fetch(url, {
 			method: "POST",
-			// in the express unit, the browser would automatically send the cookie
-			// with each request (GET and POST), but fetch will not.
-			// adding this line will make fetch send the cookie
-			// if you forget this you will not be logged in for that request
 			credentials: "include",
 			body: JSON.stringify(loginInfo),
 			headers: {
@@ -45,10 +41,7 @@ class App extends React.Component {
 				loggedInEmail: parsedLoginResponse.data.email
 			});
 		} else {
-			// hungry for more/in your project -- show a message to the user, or maybe
-			// show the message from the response to the user,
-			// clear the login form, if snazzy, highlight in red?
-			// so they can try again
+			
 			console.log("Login Failed:");
 			console.log(parsedLoginResponse);
 		}
@@ -88,10 +81,6 @@ class App extends React.Component {
 		console.log(url);
 		const response = await fetch(url, {
 			method: "GET",
-			// in the express unit, the browser would automatically send the cookie
-			// with each request (GET and POST), but fetch will not.
-			// adding this line will make fetch send the cookie
-			// if you forget this you will not be logged in for that request
 			credentials: "include",
 			body: JSON.stringify(),
 			headers: {
@@ -108,17 +97,14 @@ class App extends React.Component {
 		const parsedLoginResponse = await response.json();
 		console.log(parsedLoginResponse);
 
-		// want to change the screen in the app when we know the login was good
+		// want to change the screen in the app when we know the logout was good
 		// and show dog container
 		if (parsedLoginResponse.status.code === 200) {
 			this.setState({
 				loggedIn: false
 			});
 		} else {
-			// hungry for more/in your project -- show a message to the user, or maybe
-			// show the message from the response to the user,
-			// clear the login form, if snazzy, highlight in red?
-			// so they can try again
+			
 			console.log("Logout Failed:");
 			console.log(parsedLoginResponse);
 		}
