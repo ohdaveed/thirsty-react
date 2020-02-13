@@ -33,8 +33,6 @@ class App extends React.Component {
 		const parsedLoginResponse = await response.json();
 		console.log(parsedLoginResponse);
 
-		// want to change the screen in the app when we know the login was good
-		// and show dog container
 		if (parsedLoginResponse.status.code === 200) {
 			this.setState({
 				loggedIn: true,
@@ -88,17 +86,11 @@ class App extends React.Component {
 			}
 		});
 
-		// we have to retrieve the time logged out come up with the time
-		// between then and the time logged in
-
-		// then we're going to take that time and subtract it from the time the
-		// countdowns passed
 
 		const parsedLoginResponse = await response.json();
 		console.log(parsedLoginResponse);
 
-		// want to change the screen in the app when we know the logout was good
-		// and show dog container
+
 		if (parsedLoginResponse.status.code === 200) {
 			this.setState({
 				loggedIn: false
